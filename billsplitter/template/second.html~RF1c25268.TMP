@@ -1,0 +1,46 @@
+{% extends 'bgb.html' %}
+
+{% block content %}
+{% csrf_token %}
+<form action="{% url 'third' %}" method = "get">
+
+
+ Enter the total number of persons: <input type = "number" name ="num" >
+ </form>
+<br><br><br><br><br>
+<label style="color:black">Add details of the paid person</label>
+<br><br>
+<a href= {% url 'modal' %}> + ADD THE PAYER</a><br><br>
+{% for i in temp %}
+{{ i }}
+<form action = {% url 'delete' %} method = "get">
+<input type = "submit" value = "Delete">
+</form> 
+<br><br><br>
+{% endfor %}
+<br><br><br>
+<a href= {% url 'modalsec' %}> + ADD THE NON PAYER</a><br><br><br>
+{% for j in tempt %}
+{{ j }}
+k = {{ j }}
+<form action = {% url 'delete' %} method = "get" value = {{ j }}>
+
+<input type = "submit" value = "Delete">
+</form> 
+<br><br><br>
+{% endfor %}
+<form action = {% url 'test' %} method = "get">
+<input type ="submit" value = "Next" style="margin-right:250px;margin-left:auto">
+</form>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'bgb.html' %}
+
+{% block content %}
+{% csrf_token %}
+<style>
+.button {
+  background-color: #00004d;
+  border: none;
+  color: white;
+  
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  
+  border-radius: 5px
+}
+.button:hover {
+background-color: #002060;
+}
+.button1 {
+	padding: 12px 32px;
+	width: 750px;
+}
+.button2 {
+	width: 125px;
+	padding: 10px 32px;
+	
+}
+</style>
+<label style="color:black; font-size:30px">Add details of the paid person</label>
+<br><br><br>
+{% for i in temp %}
+{{ i }} 
+<br><br>
+{% endfor %}
+<br>
+<a href= {% url 'modal' %} font: "sans-serif"> + ADD THE PAYER</a><br><br>
+<br><br><br>
+<label style="color:black; font-size:20px"> Delete the last added member</label>
+<form action = {% url 'deleter' %} method = "POST">{% csrf_token %}
+<input type = "submit" class = "button button2" value = "Delete">
+</form>
+
+<br><br><br>
+
+
+{% if checker == 'True' %}
+	<div style ="color:red"> {{ errmsg }} </div>
+
+
+{% endif %}
+<br><br><br>
+
+
+<form action = {% url 'third' %} method = "POST">{% csrf_token %}
+<input type = "submit" class = "button button1" value = "Next">
+</form> 
+
+
+
+
+
+
+
+
+
+{% endblock %}

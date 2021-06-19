@@ -1,0 +1,64 @@
+{% extends 'bgb.html' %}
+
+{% block content %}
+{% csrf_token %}
+<style>
+.button {
+  background-color: #00004d;
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  
+  cursor: pointer;
+  width : 125px;
+  
+  border-radius: 5px
+}
+.button:hover {
+background-color: #002060;
+}
+.button1 {
+	margin: 12px 2px;
+	position:relative; top:1px;
+}
+.button2 {
+	position:relative; left:400px; top:52px;
+	margin: 12px 2px;
+}
+.button3 {
+	position:relative; left:-380px; top:2px;
+	
+}
+</style>
+<label style="color:black ; font-size:30px ">Add details of the persons who didn't pay</label>
+<br><br><br>
+{% for j in tempt %}
+{{ j }}
+<br><br>
+{% endfor %}
+<br>
+<a href= {% url 'modalsec' %}> + ADD THE NON PAYER</a><br><br><br>
+<br><br><br>
+<label style="color:black ; font-size:20px"> Delete the last added member </label>
+<form action = {% url 'delete' %} method = "POST" >{% csrf_token %}
+<input type = "submit" class = "button button1" value = "Delete">
+</form> 
+
+<br><br><br>
+<form action = {% url 'test' %} method = "POST">{% csrf_token %}
+<input type ="submit" class = "button button2"  value = "Next">
+</form>
+
+<form action = {% url 'secondback' %} method = "POST">{% csrf_token %}
+<input type ="submit"  class = "button button3" value = "Back">
+</form>
+
+
+
+
+
+{% endblock %}
